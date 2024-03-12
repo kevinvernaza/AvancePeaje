@@ -1,0 +1,33 @@
+library IEEE;
+use ieee.std_logic_1164.all;
+
+entity entradaPeaje is
+	port( semaforo : in std_logic;
+			barrera1 : in std_logic;
+			ledsemaforo: out std_logic;
+			ledbarrera1 : out std_logic;
+			salida1 : out std_logic );
+end entradaPeaje;
+
+
+architecture arqEntradaPeaje of entradaPeaje is
+begin
+	process : proceso1(semaforo, barrera1)
+		begin
+			if (semaforo=1 and barrera1=1) then
+				salida1 <= '1' ; ledbarrera1<= '1' ; ledsemaforo<= '1' ;
+				
+			elsif (semaforo=1 and barrera1=0) then
+				salida1 <= '0' ; ledbarrera1<= '0' ; ledsemaforo<= '0' ;
+				
+			elsif (semaforo=0 and barrera1=1) then
+				salida1 <= '0' ; ledbarrera1<= '1' ; ledsemaforo<= '0' ;
+				
+			else 
+				salida1 <= '0' ; ledbarrera1<= '0' ; ledsemaforo<= '0' ;
+			
+			end if;
+	end process;
+	
+
+end arqEntradaPeaje;
